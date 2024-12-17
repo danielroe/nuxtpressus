@@ -25,13 +25,15 @@ useSeoMeta({
 
 const img = useImage()
 useServerHead({
-  link: settings.value?.favicon ? [
-    {
-      rel: 'icon',
-      type: settings.value.favicon.type,
-      href: img(settings.value.favicon.id, { width: settings.value.favicon.width!, height: settings.value.favicon.height! }, { provider: 'directus' })
-    }
-  ] : []
+  link: settings.value?.favicon
+    ? [
+        {
+          rel: 'icon',
+          type: settings.value.favicon.type,
+          href: img(settings.value.favicon.id, { width: settings.value.favicon.width!, height: settings.value.favicon.height! }, { provider: 'directus' }),
+        },
+      ]
+    : [],
 })
 
 const [{ data: navItems }] = await Promise.all([
@@ -53,7 +55,10 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
 <template>
   <div class="px-8 md:px-10 font-sans flex flex-col md:gap-14">
     <NuxtRouteAnnouncer />
-    <nav aria-label="Main navigation" class="pt-6 flex justify-between items-center">
+    <nav
+      aria-label="Main navigation"
+      class="pt-6 flex justify-between items-center"
+    >
       <NuxtLink
         to="/"
         class="font-semibold text-xl"
@@ -82,7 +87,10 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
     </nav>
     <NuxtPage />
     <footer class="mt-auto pt-12 pb-8 flex flex-col gap-20">
-      <nav aria-label="Footer navigation" class="flex justify-between gap-2">
+      <nav
+        aria-label="Footer navigation"
+        class="flex justify-between gap-2"
+      >
         <NuxtLink
           to="/"
           class="font-medium text-3xl"
@@ -98,13 +106,19 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
             :key="item.page?.permalink"
             class="p-2"
           >
-            <NuxtLink :to="item.page?.permalink" class="hover:underline">
+            <NuxtLink
+              :to="item.page?.permalink"
+              class="hover:underline"
+            >
               {{ item.title }}
             </NuxtLink>
           </li>
         </ul>
       </nav>
-      <aside aria-label="Technology stack" class="flex justify-between gap-2 text-sm font-thin items-baseline">
+      <aside
+        aria-label="Technology stack"
+        class="flex justify-between gap-2 text-sm font-thin items-baseline"
+      >
         <span>NuxtPressus</span>
         <span>Built with
           <NuxtLink
