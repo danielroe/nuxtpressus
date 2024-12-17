@@ -88,7 +88,7 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
     <footer class="mt-auto pt-12 pb-8 flex flex-col gap-20">
       <nav
         aria-label="Footer navigation"
-        class="flex justify-between gap-2"
+        class="flex justify-between flex-col md:flex-row gap-2"
       >
         <NuxtLink
           to="/"
@@ -98,12 +98,12 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
         </NuxtLink>
         <ul
           v-if="footer"
-          class="text-zinc-600 font-thin columns-2"
+          class="text-zinc-600 font-thin md:columns-2"
         >
           <li
             v-for="item in footer"
             :key="item.page?.permalink"
-            class="p-2"
+            class="py-2 md:px-2"
           >
             <NuxtLink
               :to="item.page?.permalink"
