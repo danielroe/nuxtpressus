@@ -1,75 +1,42 @@
-# Nuxt 3 Minimal Starter
+# NuxtPressus
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> A site template built with Nuxt and Directus
 
-## Setup
+<p align="center">
+  <a href="https://nuxtpressus.netlify.app/" target="_blank">
+    <img width="1090" alt="Screenshot of nuxtpressus.netlify.app" src="https://github.com/user-attachments/assets/ffbc5a34-cc5d-4d25-84a9-6f05dff3ee65">
+  </a>
+</p>
 
-Make sure to install the dependencies:
+[👉 &nbsp;Check it out](https://nuxtpressus.netlify.app/)
 
-```bash
-# npm
-npm install
+## ✨ Features
 
-# pnpm
-pnpm install
+- Built with [Nuxt](https://nuxt.com/) for the frontend
+- Using [Directus](https://directus.io/) for the backend
+- [UnoCSS](https://unocss.dev/)
 
-# yarn
-yarn install
+## 🛝 Try it out locally
 
-# bun
-bun install
+You can try the app out locally.
+
+First, [create a Directus instance](https://docs.directus.io/getting-started/quickstart.html#quickstart-guide). This project was bootstrapped on [Directus Cloud](https://directus.cloud/account/register/) using the 'Simple CMS' template.
+
+Then, get your administrator token from the bottom of your user profile page, and add it to an `.env` file in your project.
+
+```
+corepack enable
+echo DIRECTUS_TOKEN="<your token>" > .env
+pnpm i
+pnpm dev
 ```
 
-## Development Server
+## Credits
 
-Start the development server on `http://localhost:3000`:
+The design was inspired by the elegant [Twenty Twenty Five theme](https://wordpress.com/theme/twentytwentyfive) for [WordPress](https://wordpress.org/). ✨
 
-```bash
-# npm
-npm run dev
+## License
 
-# pnpm
-pnpm run dev
+Made with ❤️
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Published under [MIT License](./LICENCE).

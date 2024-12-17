@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "nuxtpressus",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "url": "https://roe.dev"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --prerender",
     "dev": "nuxt dev",
     "lint": "eslint .",
     "generate": "nuxt generate",
