@@ -62,7 +62,8 @@ async function handleSubmit(event: Event) {
       {{ headline }}
     </header>
     <div class="grid grid-cols-6 gap-8">
-      <label
+      <component
+        :is="field.label ? 'label' : 'div'"
         v-for="field in fields"
         :key="field.id"
         class="flex flex-col gap-2"
@@ -73,7 +74,10 @@ async function handleSubmit(event: Event) {
           'col-span-6': field.width === '100',
         }"
       >
-        <span class="text-xs uppercase">{{ field.label }}</span>
+        <span
+          v-if="field.label"
+          class="text-xs uppercase"
+        >{{ field.label }}</span>
         <input
           v-if="field.type === 'text'"
           type="text"
@@ -100,7 +104,7 @@ async function handleSubmit(event: Event) {
           :name="field.id"
           :placeholder="field.placeholder || ''"
         />
-      </label>
+      </component>
       <span
         v-if="submissionState === 'success'"
         class="col-span-6"
