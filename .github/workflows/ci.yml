@@ -57,7 +57,7 @@ jobs:
   browser:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.48.2-focal
+      image: mcr.microsoft.com/playwright:v1.49.1-focal
 
     steps:
       - uses: actions/checkout@v4
