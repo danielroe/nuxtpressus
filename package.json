@@ -41,6 +41,7 @@
     "@playwright/test": "1.48.2",
     "@vue/test-utils": "2.4.6",
     "directus-sdk-typegen": "^0.1.7",
+    "dotenv": "^16.4.7",
     "eslint": "9.14.0",
     "happy-dom": "15.11.6",
     "lint-staged": "15.2.10",
