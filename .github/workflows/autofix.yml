@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: read
+env:
+  DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
 
 jobs:
   code:
