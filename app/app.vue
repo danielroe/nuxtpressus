@@ -48,7 +48,6 @@ useServerHead({
 const footer = computed(() => navItems.value?.find(nav => nav.id === 'footer' && nav.is_active)?.items?.filter(item => item.page))
 
 // TODO: dropdown handling (Group)
-// TODO: font thin by default
 const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && nav.is_active)?.items?.filter(item => item.page))
 </script>
 
