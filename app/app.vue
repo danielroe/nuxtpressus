@@ -17,9 +17,10 @@ const { data: settings } = await useAsyncData(() => directus.request(readSinglet
   ],
 })))
 
+const siteTitle = computed(() => settings.value?.title ?? 'NuxtPressus')
 useSeoMeta({
-  title: () => settings.value?.title ?? 'NuxtPressus',
-  titleTemplate: `%s - ${settings.value?.title ?? 'NuxtPressus'}`,
+  title: () => siteTitle.value,
+  titleTemplate: s => s && s !== siteTitle.value ? `${s} - ${siteTitle.value}` : (siteTitle.value),
   description: settings.value?.description ?? 'NuxtPressus is a Nuxt starter template for Directus',
 })
 
