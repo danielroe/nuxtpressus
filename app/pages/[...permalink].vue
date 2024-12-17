@@ -28,6 +28,14 @@ const { data: page } = await useAsyncData(`page-${(route.params.permalink || [])
             item: {
               block_richtext: ['id', 'content', 'headline', 'title', 'alignment'],
               block_hero: ['id', 'alignment', 'title', 'headline', { image: ['*', 'id', 'width', 'height', 'description'] }],
+              block_gallery: [
+                'id',
+                'headline',
+                'title',
+                {
+                  items: ['sort', { directus_file: ['id', 'width', 'height', 'description'] }],
+                },
+              ],
               block_form: [
                 'id',
                 'title',
@@ -91,6 +99,11 @@ useSeoMeta({
       />
       <HeroBlock
         v-else-if="block.collection === 'block_hero'"
+        v-bind="block.item"
+      />
+      <GalleryBlock
+        v-else-if="block.collection === 'block_gallery'"
+        :images="(block.item.items as Array<{ directus_file: any }>).map(i => i.directus_file)"
         v-bind="block.item"
       />
     </section>
