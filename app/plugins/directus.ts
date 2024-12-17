@@ -11,6 +11,7 @@ export default defineNuxtPlugin(async () => {
       'url',
       'description',
       {
+        favicon: ['id', 'type', 'description', 'width', 'height'],
         logo: ['id', 'description', 'width', 'height'],
       },
     ],

@@ -8,6 +8,17 @@ useSeoMeta({
   description: $settings.value?.description ?? 'NuxtPressus is a Nuxt starter template for Directus',
 })
 
+const img = useImage()
+useServerHead({
+  link: $settings.value?.favicon ? [
+    {
+      rel: 'icon',
+      type: $settings.value.favicon.type,
+      href: img($settings.value.favicon.id, { width: $settings.value.favicon.width!, height: $settings.value.favicon.height! }, { provider: 'directus' })
+    }
+  ] : []
+})
+
 const [{ data: navItems }] = await Promise.all([
   useAsyncData('navigation', async () => {
     const navs = $directus.request($readItems('navigation', {
@@ -72,7 +83,7 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
             :key="item.page?.permalink"
             class="p-2"
           >
-            <NuxtLink :to="item.page?.permalink">
+            <NuxtLink :to="item.page?.permalink" class="hover:underline">
               {{ item.title }}
             </NuxtLink>
           </li>
@@ -80,12 +91,21 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
       </nav>
       <aside class="flex justify-between gap-2 text-sm font-thin items-baseline">
         <span>Nuxtpressus</span>
-        <span>Designed with <NuxtLink
-          class="underline hover:no-underline"
-          to="https://nuxt.com"
-        >
-          Nuxt
-        </NuxtLink></span>
+        <span>Built with
+          <NuxtLink
+            class="underline hover:no-underline"
+            to="https://nuxt.com"
+          >
+            Nuxt
+          </NuxtLink>
+          and
+          <NuxtLink
+            class="underline hover:no-underline"
+            to="https://directus.io"
+          >
+            Directus
+          </NuxtLink>
+        </span>
       </aside>
     </footer>
   </div>
