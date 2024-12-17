@@ -22,7 +22,7 @@ defineProps<BlockGallery & { images: Array<{ id: string, width?: number, height?
           provider="directus"
           class="object-cover w-full h-full"
           :src="image.id"
-          :alt="image.description"
+          :alt="image.description || ''"
         />
       </div>
     </div>
