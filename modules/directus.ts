@@ -16,10 +16,17 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'directus',
   },
   async setup(options, nuxt) {
+    if (import.meta.test) {
+      return
+    }
     const types = await generateDirectusTypes({
       directusUrl: options.url,
-      outputPath: 'node_modules/.tmp-directus-types',
+      // @ts-expect-error https://github.com/bryantgillespie/directus-sdk-typegen/issues/3
+      outputPath: false,
       directusToken: process.env.DIRECTUS_TOKEN,
+    }).catch(() => {
+      console.warn('Failed to generate Directus types. Make sure you set a DIRECTUS_TOKEN environment variable with administrator permissions.')
+      return ''
     })
 
     addTemplate({

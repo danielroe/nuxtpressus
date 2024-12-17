@@ -41,7 +41,6 @@
   "devDependencies": {
     "@playwright/test": "1.49.1",
     "@vue/test-utils": "2.4.6",
-    "dotenv": "16.4.7",
     "eslint": "9.17.0",
     "happy-dom": "15.11.7",
     "lint-staged": "15.2.11",

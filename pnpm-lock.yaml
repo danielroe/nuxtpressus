@@ -60,9 +60,6 @@ importers:
       '@vue/test-utils':
         specifier: 2.4.6
         version: 2.4.6
-      dotenv:
-        specifier: 16.4.7
-        version: 16.4.7
       eslint:
         specifier: 9.17.0
         version: 9.17.0(jiti@2.4.1)
