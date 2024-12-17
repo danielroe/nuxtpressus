@@ -42,11 +42,11 @@
     "@vue/test-utils": "2.4.6",
     "directus-sdk-typegen": "^0.1.7",
     "eslint": "9.14.0",
-    "happy-dom": "15.11.6",
+    "happy-dom": "15.11.7",
     "lint-staged": "15.2.10",
     "simple-git-hooks": "2.11.1",
     "typescript": "5.6.3",
-    "vitest": "2.1.5",
+    "vitest": "2.1.8",
     "vue-tsc": "2.1.10"
   },
   "simple-git-hooks": {
