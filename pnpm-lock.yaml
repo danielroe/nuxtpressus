@@ -32,9 +32,6 @@ importers:
       nuxt:
         specifier: ^3.13.2
         version: 3.14.159(@parcel/watcher@2.5.0)(@types/node@22.9.0)(eslint@9.14.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.25.0)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.6.3))(webpack-sources@3.2.3)
-      nuxt-directus:
-        specifier: ^5.7.0
-        version: 5.7.0(magicast@0.3.5)(rollup@4.25.0)(webpack-sources@3.2.3)
       nuxt-og-image:
         specifier: ^3.0.6
         version: 3.0.8(magicast@0.3.5)(rollup@4.25.0)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))(webpack-sources@3.2.3)
@@ -3915,9 +3912,6 @@ packages:
     resolution: {integrity: sha512-ZVu45nuDrdb7nzKW2kLGY/N1vvFYLLbUVX6gUYw4BApKGGu4+GktTR5o48dGVgMYX9A8chaugl7TL9ZYmwC9Mg==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
-
-  nuxt-directus@5.7.0:
-    resolution: {integrity: sha512-hoNXbhQ8UgDrCXqzqxC0wngi64AVqYYGGU/bwylgZWbKyU0m6kyNQVLGuQuXmFbogr2WMaw+FtXSgLz+DS32hA==}
 
   nuxt-og-image@3.0.8:
     resolution: {integrity: sha512-eoxSqBylFQ8F77dzmietaUKR3w80JAG0dZtWjVA+eelIqfHSPA2fQ9pXhcICYPeh+kyH2n//P+TRkz1MSGl4Ug==}
@@ -10208,15 +10202,6 @@ snapshots:
       boolbase: 1.0.0
 
   nuxi@3.15.0: {}
-
-  nuxt-directus@5.7.0(magicast@0.3.5)(rollup@4.25.0)(webpack-sources@3.2.3):
-    dependencies:
-      '@nuxt/kit': 3.14.159(magicast@0.3.5)(rollup@4.25.0)(webpack-sources@3.2.3)
-    transitivePeerDependencies:
-      - magicast
-      - rollup
-      - supports-color
-      - webpack-sources
 
   nuxt-og-image@3.0.8(magicast@0.3.5)(rollup@4.25.0)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))(webpack-sources@3.2.3):
     dependencies:

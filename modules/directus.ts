@@ -18,6 +18,7 @@ export default defineNuxtModule<ModuleOptions>({
   async setup(options, nuxt) {
     const types = await generateDirectusTypes({
       directusUrl: options.url,
+      outputPath: 'node_modules/.tmp-directus-types',
       directusToken: process.env.DIRECTUS_TOKEN,
     })
 
