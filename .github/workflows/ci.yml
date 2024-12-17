@@ -8,6 +8,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+env:
+  DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
+
 jobs:
   lint:
     runs-on: ubuntu-latest
