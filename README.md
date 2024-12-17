@@ -35,7 +35,7 @@ pnpm dev
 
 ## ❤️ Credits
 
-The design was inspired by the elegant [Twenty Twenty Five theme](https://wordpress.com/theme/twentytwentyfive) for [WordPress](https://wordpress.org/). ✨
+The design was inspired by the elegant [Twenty Twenty-Five theme](https://wordpress.com/theme/twentytwentyfive) for [WordPress](https://wordpress.org/). ✨
 
 ## 🏛️ License
 
