@@ -14,7 +14,8 @@
 
 - Built with [Nuxt](https://nuxt.com/) for the frontend
 - Using [Directus](https://directus.io/) for the backend
-- [UnoCSS](https://unocss.dev/)
+- [UnoCSS](https://unocss.dev/) for atomic CSS
+- ... plus, [ESLint](https://eslint.org/), [html-validate](https://html-validate.org/), and more
 
 ## 🛝 Try it out locally
 
