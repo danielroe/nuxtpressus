@@ -4,18 +4,26 @@ import { readItems, readSingleton } from '@directus/sdk'
 defineOgImage()
 const directus = useDirectus()
 
-const { data: settings } = await useAsyncData(() => directus.request(readSingleton('globals', {
-  fields: [
-    'title',
-    'tagline',
-    'url',
-    'description',
-    {
-      favicon: ['id', 'type', 'description', 'width', 'height'],
-      logo: ['id', 'description', 'width', 'height'],
-    },
-  ],
-})))
+const [{ data: settings }, { data: navItems }] = await Promise.all([
+  useAsyncData(() => directus.request(readSingleton('globals', {
+    fields: [
+      'title',
+      'tagline',
+      'url',
+      'description',
+      {
+        favicon: ['id', 'type', 'description', 'width', 'height'],
+        logo: ['id', 'description', 'width', 'height'],
+      },
+    ],
+  }))),
+  useAsyncData('navigation', async () => {
+    const navs = directus.request(readItems('navigation', {
+      fields: ['id', 'title', 'is_active', { items: ['title', { page: ['permalink'] }] }],
+    }))
+    return navs
+  }),
+])
 
 const siteTitle = computed(() => settings.value?.title ?? 'NuxtPressus')
 useSeoMeta({
@@ -36,15 +44,6 @@ useServerHead({
       ]
     : [],
 })
-
-const [{ data: navItems }] = await Promise.all([
-  useAsyncData('navigation', async () => {
-    const navs = directus.request(readItems('navigation', {
-      fields: ['id', 'title', 'is_active', { items: ['title', { page: ['permalink'] }] }],
-    }))
-    return navs
-  }),
-])
 
 const footer = computed(() => navItems.value?.find(nav => nav.id === 'footer' && nav.is_active)?.items?.filter(item => item.page))
 
