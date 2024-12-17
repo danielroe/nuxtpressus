@@ -19,7 +19,7 @@
     "test:unit": "vitest",
     "test:nuxt": "vitest -c vitest.nuxt.config.ts",
     "test:browser": "playwright test test/browser",
-    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.49.1-focal bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
+    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.49.1-noble bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
   },
   "dependencies": {
     "@directus/sdk": "^18.0.3",
