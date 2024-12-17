@@ -70,6 +70,9 @@ useSeoMeta({
     v-if="page"
     class="flex flex-col gap-12 lg:gap-22 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
   >
+    <h1 class="text-4xl font-light lg:text-5xl">
+      {{ page.title }}
+    </h1>
     <section
       v-for="block in page.blocks"
       :key="block.id"
