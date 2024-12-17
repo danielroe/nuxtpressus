@@ -6,11 +6,11 @@ const directus = useDirectus()
 
 const route = useRoute('permalink')
 
-const { data: page } = await useAsyncData('page', async () => {
+const { data: page } = await useAsyncData(`page-${(route.params.permalink || []).join('/')}`, async () => {
   const pages = await directus.request(readItems('pages', {
     filter: {
       permalink: {
-        _eq: withLeadingSlash(route.params.permalink?.join('/')),
+        _eq: withLeadingSlash((route.params.permalink || []).join('/')),
       },
       status: {
         _eq: 'published',
@@ -27,8 +27,8 @@ const { data: page } = await useAsyncData('page', async () => {
           {
             item: {
               block_richtext: ['id', 'content', 'headline', 'title', 'alignment'],
-              block_form:
-              [
+              block_hero: ['id', 'alignment', 'title', 'headline', { image: ['*', 'id', 'width', 'height', 'description'] }],
+              block_form: [
                 'id',
                 'title',
                 'headline',
@@ -70,9 +70,6 @@ useSeoMeta({
     v-if="page"
     class="flex flex-col gap-12 lg:gap-22 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
   >
-    <h1 class="text-4xl font-light lg:text-5xl">
-      {{ page.title }}
-    </h1>
     <section
       v-for="block in page.blocks"
       :key="block.id"
@@ -88,6 +85,10 @@ useSeoMeta({
           ...block.item,
           form: block.item.form,
         }"
+      />
+      <HeroBlock
+        v-else-if="block.collection === 'block_hero'"
+        v-bind="block.item"
       />
     </section>
   </div>

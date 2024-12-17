@@ -58,9 +58,12 @@ async function handleSubmit(event: Event) {
     class="flex flex-col gap-2"
     @submit.prevent="handleSubmit"
   >
-    <header class="text-xl font-light">
-      {{ headline }}
+    <header class="text-2xl font-bold">
+      {{ title }}
     </header>
+    <p class="text-xl font-light">
+      {{ headline }}
+    </p>
     <div class="grid grid-cols-6 gap-8">
       <component
         :is="field.label ? 'label' : 'div'"
@@ -77,7 +80,9 @@ async function handleSubmit(event: Event) {
         <span
           v-if="field.label"
           class="text-xs uppercase"
-        >{{ field.label }}</span>
+        >
+          {{ field.label }}
+        </span>
         <input
           v-if="field.type === 'text'"
           type="text"

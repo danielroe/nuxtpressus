@@ -5,10 +5,17 @@ defineProps<BlockRichtext>()
 </script>
 
 <template>
-  <div>
+  <section>
+    <header
+      v-if="headline"
+      class="text-2xl font-medium"
+    >
+      {{ headline }}
+    </header>
     <div
+      v-if="content"
       class="prose"
       v-html="content"
     />
-  </div>
+  </section>
 </template>
