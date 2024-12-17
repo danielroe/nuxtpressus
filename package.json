@@ -1,0 +1,56 @@
+{
+  "name": "nuxt-app",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Daniel Roe",
+    "email": "daniel@roe.dev",
+    "url": "https://roe.dev"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "eslint .",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && simple-git-hooks",
+    "test:types": "vue-tsc --noEmit",
+    "test:unit": "vitest",
+    "test:nuxt": "vitest -c vitest.nuxt.config.ts",
+    "test:browser": "playwright test test/browser",
+    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.48.0-focal bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^0.6.0",
+    "@nuxt/fonts": "^0.10.0",
+    "@nuxt/image": "^1.8.1",
+    "@nuxt/scripts": "^0.9.5",
+    "@nuxtjs/html-validator": "^1.8.2",
+    "nuxt": "^3.13.2",
+    "nuxt-og-image": "^3.0.6",
+    "nuxt-time": "^1.0.2",
+    "unplugin-vue-router": "^0.10.8"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "3.14.4",
+    "@playwright/test": "1.48.2",
+    "@vue/test-utils": "2.4.6",
+    "eslint": "9.14.0",
+    "happy-dom": "15.11.6",
+    "lint-staged": "15.2.10",
+    "simple-git-hooks": "2.11.1",
+    "typescript": "5.6.3",
+    "vitest": "2.1.5",
+    "vue-tsc": "2.1.10"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,mjs,cjs,json,.*rc}": [
+      "npx eslint --fix"
+    ]
+  },
+  "packageManager": "pnpm@9.13.1"
+}
