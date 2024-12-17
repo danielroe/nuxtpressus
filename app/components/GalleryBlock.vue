@@ -14,7 +14,7 @@ defineProps<BlockGallery & { images: Array<{ id: string, width?: number, height?
     </p>
     <div class="py-4 grid grid-cols-3 gap-4">
       <div
-        v-for="image in images"
+        v-for="(image, i) in images"
         :key="image.id"
         class="overflow-hidden aspect-ratio-square"
       >
@@ -23,6 +23,7 @@ defineProps<BlockGallery & { images: Array<{ id: string, width?: number, height?
           class="object-cover w-full h-full"
           :src="image.id"
           :alt="image.description || ''"
+          :loading="i > 2 ? 'lazy' : undefined"
         />
       </div>
     </div>

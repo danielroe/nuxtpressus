@@ -3,6 +3,11 @@ import { readItems } from '@directus/sdk'
 
 const directus = useDirectus()
 
+useSeoMeta({
+  title: 'Blog',
+  description: 'Read the latest blog posts from our team.',
+})
+
 const { data: blogs } = await useAsyncData('posts', async () => {
   const posts = await directus.request(readItems('posts', {
     filter: {
