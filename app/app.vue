@@ -53,8 +53,8 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
 </script>
 
 <template>
+  <NuxtRouteAnnouncer />
   <div class="px-8 md:px-10 font-sans font-thin flex flex-col md:gap-14">
-    <NuxtRouteAnnouncer />
     <nav
       aria-label="Main navigation"
       class="pt-6 flex justify-between items-center"
@@ -66,8 +66,8 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
         <NuxtImg
           v-if="settings?.logo"
           :src="settings.logo.id"
-          :width="settings.logo.width || undefined"
-          :height="settings.logo.height || undefined"
+          :width="settings.logo.width || 115"
+          :height="settings.logo.height || 24"
           provider="directus"
           class="h-6"
           :alt="settings.logo?.description ?? settings.title!"
