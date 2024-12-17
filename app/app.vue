@@ -1,13 +1,92 @@
 <script setup lang="ts">
 defineOgImage()
+const { $directus, $readItems, $settings } = useNuxtApp()
 
 useSeoMeta({
-  title: 'Nuxt Starter',
+  title: () => $settings.value?.title ?? 'NuxtPressus',
+  titleTemplate: `%s - ${$settings.value?.title ?? 'NuxtPressus'}`,
+  description: $settings.value?.description ?? 'NuxtPressus is a Nuxt starter template for Directus',
 })
+
+const [{ data: navItems }] = await Promise.all([
+  useAsyncData('navigation', async () => {
+    const navs = $directus.request($readItems('navigation', {
+      fields: ['id', 'title', 'is_active', { items: ['title', { page: ['permalink'] }] }],
+    }))
+    return navs
+  }),
+])
+
+const footer = computed(() => navItems.value?.find(nav => nav.id === 'footer' && nav.is_active)?.items?.filter(item => item.page))
+
+// TODO: dropdown handling (Group)
+// TODO: font thin by default
+const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && nav.is_active)?.items?.filter(item => item.page))
 </script>
 
 <template>
-  <div>
+  <div class="px-8 md:px-10 font-sans flex flex-col md:gap-14">
+    <NuxtRouteAnnouncer />
+    <nav class="pt-6 flex justify-between items-center">
+      <NuxtLink
+        to="/"
+        class="font-semibold text-xl"
+      >
+        <NuxtImg
+          v-if="$settings.logo"
+          :src="$settings.logo.id"
+          :width="$settings.logo.width || undefined"
+          :height="$settings.logo.height || undefined"
+          provider="directus"
+          class="h-6"
+          :alt="$settings.logo?.description ?? $settings.title!"
+        />
+        <span v-else>{{ $settings.title }}</span>
+      </NuxtLink>
+      <ul class="font-thin text-lg">
+        <li
+          v-for="item in header"
+          :key="item.page?.permalink"
+        >
+          <NuxtLink :to="item.page?.permalink">
+            {{ item.title }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </nav>
     <NuxtPage />
+    <footer class="mt-auto pt-12 pb-8 flex flex-col gap-20">
+      <nav class="flex justify-between gap-2">
+        <NuxtLink
+          to="/"
+          class="font-medium text-3xl"
+        >
+          {{ $settings.title }}
+        </NuxtLink>
+        <ul
+          v-if="footer"
+          class="text-zinc-600 font-thin columns-2"
+        >
+          <li
+            v-for="item in footer"
+            :key="item.page?.permalink"
+            class="p-2"
+          >
+            <NuxtLink :to="item.page?.permalink">
+              {{ item.title }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+      <aside class="flex justify-between gap-2 text-sm font-thin items-baseline">
+        <span>Nuxtpressus</span>
+        <span>Designed with <NuxtLink
+          class="underline hover:no-underline"
+          to="https://nuxt.com"
+        >
+          Nuxt
+        </NuxtLink></span>
+      </aside>
+    </footer>
   </div>
 </template>
