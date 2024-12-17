@@ -9,7 +9,7 @@
     "url": "https://roe.dev"
   },
   "scripts": {
-    "build": "nuxt build --prerender",
+    "build": "nuxt build --preset netlify-static",
     "dev": "nuxt dev",
     "lint": "eslint .",
     "generate": "nuxt generate",
