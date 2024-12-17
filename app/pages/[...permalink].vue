@@ -67,7 +67,7 @@ useSeoMeta({
 <template>
   <div
     v-if="page"
-    class="flex flex-col gap-12 lg:gap-22 mx-auto max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
+    class="flex flex-col gap-12 lg:gap-22 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
   >
     <h1 class="text-4xl lg:text-5xl">
       {{ page.title }}

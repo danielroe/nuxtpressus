@@ -51,7 +51,7 @@ function handleLinkClicks(event: Event) {
 <template>
   <div
     v-if="blog"
-    class="flex flex-col gap-6 mx-auto max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
+    class="flex flex-col gap-6 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
   >
     <div class="h-96 overflow-hidden">
       <NuxtImg
@@ -69,6 +69,7 @@ function handleLinkClicks(event: Event) {
     </h1>
     <aside
       v-if="blog.author"
+      aria-label="Blog article metadata"
       class="font-thin text-sm text-gray-800"
     >
       Written by

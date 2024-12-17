@@ -23,7 +23,7 @@ const { data: blogs } = await useAsyncData('posts', async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-12 lg:gap-22 mx-auto max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]">
+  <div class="flex flex-col gap-12 lg:gap-22 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]">
     <h1 class="text-4xl lg:text-5xl">
       Blog
     </h1>
@@ -47,6 +47,7 @@ const { data: blogs } = await useAsyncData('posts', async () => {
       </p>
       <aside
         v-if="blog.published_at"
+        :aria-label="`Blog article metadata for ${blog.title}`"
         class="text-sm text-gray-500"
       >
         <NuxtLink
