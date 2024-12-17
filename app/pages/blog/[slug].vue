@@ -15,6 +15,7 @@ const { data: blog } = await useAsyncData('post', async () => {
       },
     },
     fields: [
+      'id',
       'image',
       {
         image: ['id', 'width', 'height', 'description'],
@@ -52,6 +53,7 @@ function handleLinkClicks(event: Event) {
 <template>
   <div
     v-if="blog"
+    :style="{ '--id': blog.id }"
     class="flex flex-col gap-6 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]"
   >
     <div class="h-96 overflow-hidden">
@@ -85,3 +87,9 @@ function handleLinkClicks(event: Event) {
     <!-- TODO: more posts -->
   </div>
 </template>
+
+<style scoped>
+h1 {
+  view-transition-name: var(--id);
+}
+</style>

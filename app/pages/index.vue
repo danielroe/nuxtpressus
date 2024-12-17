@@ -33,6 +33,7 @@ const { data: blogs } = await useAsyncData('posts', async () => {
       v-for="blog in blogs"
       :key="blog.id"
       class="flex flex-col gap-6"
+      :style="{ '--id': blog.id }"
     >
       <header>
         <h2 class="text-3xl font-light">
@@ -67,3 +68,9 @@ const { data: blogs } = await useAsyncData('posts', async () => {
     </article>
   </div>
 </template>
+
+<style scoped>
+article h2 {
+  view-transition-name: var(--id);
+}
+</style>
