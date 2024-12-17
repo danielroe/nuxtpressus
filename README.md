@@ -32,11 +32,11 @@ pnpm i
 pnpm dev
 ```
 
-## Credits
+## ❤️ Credits
 
 The design was inspired by the elegant [Twenty Twenty Five theme](https://wordpress.com/theme/twentytwentyfive) for [WordPress](https://wordpress.org/). ✨
 
-## License
+## 🏛️ License
 
 Made with ❤️
 
