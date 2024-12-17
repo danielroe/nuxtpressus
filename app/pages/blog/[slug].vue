@@ -4,7 +4,7 @@ import { readItems } from '@directus/sdk'
 const directus = useDirectus()
 const route = useRoute('blog-slug')
 
-const { data: blog } = await useAsyncData('post', async () => {
+const { data: blog } = await useAsyncData(`blog-${route.params.slug}`, async () => {
   const posts = await directus.request(readItems('posts', {
     filter: {
       slug: {
