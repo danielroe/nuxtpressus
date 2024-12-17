@@ -33,6 +33,7 @@
     "directus-sdk-typegen": "0.1.7",
     "nuxt": "^3.14.1592",
     "nuxt-og-image": "^4.0.1",
+    "nuxt-rebundle": "^0.0.2",
     "nuxt-time": "^1.0.3",
     "ufo": "^1.5.4",
     "unocss": "^0.65.1",

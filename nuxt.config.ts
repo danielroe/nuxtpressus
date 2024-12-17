@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     'nuxt-time',
     '@nuxt/test-utils/module',
     '@unocss/nuxt',
+    'nuxt-rebundle',
   ],
   devtools: { enabled: true },
   app: {
