@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     },
   },
   css: ['@unocss/reset/tailwind-compat.css'],
+  sourcemap: { client: true },
   future: {
     compatibilityVersion: 4,
   },
