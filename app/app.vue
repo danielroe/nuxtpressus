@@ -1,27 +1,42 @@
 <script setup lang="ts">
+import { readItems, readSingleton } from '@directus/sdk'
+
 defineOgImage()
-const { $directus, $readItems, $settings } = useNuxtApp()
+const directus = useDirectus()
+
+const { data: settings } = await useAsyncData(() => directus.request(readSingleton('globals', {
+  fields: [
+    'title',
+    'tagline',
+    'url',
+    'description',
+    {
+      favicon: ['id', 'type', 'description', 'width', 'height'],
+      logo: ['id', 'description', 'width', 'height'],
+    },
+  ],
+})))
 
 useSeoMeta({
-  title: () => $settings.value?.title ?? 'NuxtPressus',
-  titleTemplate: `%s - ${$settings.value?.title ?? 'NuxtPressus'}`,
-  description: $settings.value?.description ?? 'NuxtPressus is a Nuxt starter template for Directus',
+  title: () => settings.value?.title ?? 'NuxtPressus',
+  titleTemplate: `%s - ${settings.value?.title ?? 'NuxtPressus'}`,
+  description: settings.value?.description ?? 'NuxtPressus is a Nuxt starter template for Directus',
 })
 
 const img = useImage()
 useServerHead({
-  link: $settings.value?.favicon ? [
+  link: settings.value?.favicon ? [
     {
       rel: 'icon',
-      type: $settings.value.favicon.type,
-      href: img($settings.value.favicon.id, { width: $settings.value.favicon.width!, height: $settings.value.favicon.height! }, { provider: 'directus' })
+      type: settings.value.favicon.type,
+      href: img(settings.value.favicon.id, { width: settings.value.favicon.width!, height: settings.value.favicon.height! }, { provider: 'directus' })
     }
   ] : []
 })
 
 const [{ data: navItems }] = await Promise.all([
   useAsyncData('navigation', async () => {
-    const navs = $directus.request($readItems('navigation', {
+    const navs = directus.request(readItems('navigation', {
       fields: ['id', 'title', 'is_active', { items: ['title', { page: ['permalink'] }] }],
     }))
     return navs
@@ -44,15 +59,15 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
         class="font-semibold text-xl"
       >
         <NuxtImg
-          v-if="$settings.logo"
-          :src="$settings.logo.id"
-          :width="$settings.logo.width || undefined"
-          :height="$settings.logo.height || undefined"
+          v-if="settings?.logo"
+          :src="settings.logo.id"
+          :width="settings.logo.width || undefined"
+          :height="settings.logo.height || undefined"
           provider="directus"
           class="h-6"
-          :alt="$settings.logo?.description ?? $settings.title!"
+          :alt="settings.logo?.description ?? settings.title!"
         />
-        <span v-else>{{ $settings.title }}</span>
+        <span v-else>{{ settings?.title || 'NuxtPressus' }}</span>
       </NuxtLink>
       <ul class="font-thin text-lg">
         <li
@@ -72,7 +87,7 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
           to="/"
           class="font-medium text-3xl"
         >
-          {{ $settings.title }}
+          {{ settings?.title || 'NuxtPressus' }}
         </NuxtLink>
         <ul
           v-if="footer"
@@ -90,7 +105,7 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
         </ul>
       </nav>
       <aside aria-label="Technology stack" class="flex justify-between gap-2 text-sm font-thin items-baseline">
-        <span>Nuxtpressus</span>
+        <span>NuxtPressus</span>
         <span>Built with
           <NuxtLink
             class="underline hover:no-underline"

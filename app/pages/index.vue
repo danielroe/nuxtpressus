@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp()
+import { readItems } from '@directus/sdk'
+
+const directus = useDirectus()
 
 const { data: blogs } = await useAsyncData('posts', async () => {
-  const posts = await $directus.request($readItems('posts', {
+  const posts = await directus.request(readItems('posts', {
     filter: {
       status: {
         _eq: 'published',

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp()
+import { readItems } from '@directus/sdk'
 
+const directus = useDirectus()
 const route = useRoute('blog-slug')
 
 const { data: blog } = await useAsyncData('post', async () => {
-  const posts = await $directus.request($readItems('posts', {
+  const posts = await directus.request(readItems('posts', {
     filter: {
       slug: {
         _eq: route.params.slug,

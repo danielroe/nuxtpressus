@@ -12,7 +12,7 @@ const props = defineProps<Omit<BlockForm, 'form'> & {
   }
 }>()
 
-const { $directus } = useNuxtApp()
+const directus = useDirectus()
 const router = useRouter()
 
 const submissionState = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -24,7 +24,7 @@ async function handleSubmit(event: Event) {
   submissionState.value = 'loading'
 
   try {
-    await $directus.request(createItem('form_submissions', {
+    await directus.request(createItem('form_submissions', {
       form: props.form.id,
       // @ts-expect-error id is not actually required
       values: entries.map(([id, value]) => ({

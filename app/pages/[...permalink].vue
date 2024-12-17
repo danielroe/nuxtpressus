@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { readItems } from '@directus/sdk'
 import { withLeadingSlash } from 'ufo'
 
-const { $directus, $readItems } = useNuxtApp()
+const directus = useDirectus()
 
 const route = useRoute('permalink')
 
 const { data: page } = await useAsyncData('page', async () => {
-  const pages = await $directus.request($readItems('pages', {
+  const pages = await directus.request(readItems('pages', {
     filter: {
       permalink: {
         _eq: withLeadingSlash(route.params.permalink?.join('/')),
