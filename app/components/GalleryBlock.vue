@@ -21,6 +21,9 @@ defineProps<BlockGallery & { images: Array<{ id: string, width?: number, height?
         <NuxtImg
           provider="directus"
           class="object-cover w-full h-full"
+          :height="image.height"
+          :width="image.width"
+          sizes="250"
           :src="image.id"
           :alt="image.description || ''"
           :loading="i > 2 ? 'lazy' : undefined"
