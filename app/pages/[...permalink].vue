@@ -52,6 +52,12 @@ const { data: page } = await useAsyncData('page', async () => {
   return pages[0]
 })
 
+if (!page.value) {
+  throw createError({
+    statusCode: 404,
+  })
+}
+
 useSeoMeta({
   title: page.value?.title,
   description: page.value?.description,
