@@ -2,9 +2,14 @@
 import { createItem } from '@directus/sdk'
 import type { BlockForm, Form, FormField } from '#build/directus-types'
 
-const props = defineProps<BlockForm & {
+const props = defineProps<Omit<BlockForm, 'form'> & {
   fields: FormField[]
-  form: Form
+  form: {
+    submit_label?: Form['submit_label'] | null
+    success_message?: Form['success_message'] | null
+    success_redirect_url?: Form['success_redirect_url'] | null
+    id?: Form['id'] | null
+  }
 }>()
 
 const { $directus } = useNuxtApp()
