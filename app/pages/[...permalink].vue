@@ -75,9 +75,12 @@ useSeoMeta({
         v-bind="block.item"
       />
       <FormBlock
-        v-else-if="block.collection === 'block_form'"
-        :fields="block.item.form?.fields || []"
-        v-bind="block.item"
+        v-else-if="block.collection === 'block_form' && block.item.form"
+        :fields="block.item.form.fields || []"
+        v-bind="{
+          ...block.item,
+          form: block.item.form,
+        }"
       />
     </section>
   </div>
