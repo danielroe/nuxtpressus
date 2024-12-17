@@ -65,7 +65,7 @@ function handleLinkClicks(event: Event) {
         :alt="blog.image?.description ?? `Cover image for ${blog.title}`"
       />
     </div>
-    <h1 class="text-4xl">
+    <h1 class="text-4xl font-light">
       {{ blog.title }}
     </h1>
     <aside

@@ -53,7 +53,7 @@ const header = computed(() => navItems.value?.find(nav => nav.id === 'main' && n
 </script>
 
 <template>
-  <div class="px-8 md:px-10 font-sans flex flex-col md:gap-14">
+  <div class="px-8 md:px-10 font-sans font-thin flex flex-col md:gap-14">
     <NuxtRouteAnnouncer />
     <nav
       aria-label="Main navigation"

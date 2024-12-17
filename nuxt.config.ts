@@ -33,6 +33,11 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  fonts: {
+    defaults: {
+      weights: [100, 300, 500, 600],
+    },
+  },
   // Ensure that any HTML validation errors are treated as build errors
   htmlValidator: {
     failOnError: true,

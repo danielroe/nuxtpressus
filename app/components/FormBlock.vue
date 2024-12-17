@@ -58,7 +58,7 @@ async function handleSubmit(event: Event) {
     class="flex flex-col gap-2"
     @submit.prevent="handleSubmit"
   >
-    <header class="text-xl">
+    <header class="text-xl font-light">
       {{ headline }}
     </header>
     <div class="grid grid-cols-6 gap-8">

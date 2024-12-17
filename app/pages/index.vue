@@ -26,7 +26,7 @@ const { data: blogs } = await useAsyncData('posts', async () => {
 
 <template>
   <div class="flex flex-col gap-12 lg:gap-22 max-w-2xl w-full py-14 mx-auto min-h-[50vh] sm:min-h-[65vh]">
-    <h1 class="text-4xl lg:text-5xl">
+    <h1 class="text-4xl font-light lg:text-5xl">
       Blog
     </h1>
     <article
@@ -35,7 +35,7 @@ const { data: blogs } = await useAsyncData('posts', async () => {
       class="flex flex-col gap-6"
     >
       <header>
-        <h2 class="text-3xl">
+        <h2 class="text-3xl font-light">
           <NuxtLink
             class="hover:underline underline-1"
             :to="blog.slug ? { name: 'blog-slug', params: { slug: blog.slug } } : ''"
