@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@directus/sdk": "^18.0.3",
-    "@nuxt/eslint": "^0.7.3",
+    "@nuxt/eslint": "^1.0.0",
     "@nuxt/fonts": "^0.10.3",
     "@nuxt/image": "^1.8.1",
     "@nuxt/scripts": "^0.9.5",
