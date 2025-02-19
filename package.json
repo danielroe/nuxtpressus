@@ -22,7 +22,7 @@
     "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.49.1-noble bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
   },
   "dependencies": {
-    "@directus/sdk": "^18.0.3",
+    "@directus/sdk": "^19.0.0",
     "@nuxt/eslint": "^1.0.0",
     "@nuxt/fonts": "^0.10.3",
     "@nuxt/image": "^1.8.1",
