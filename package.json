@@ -31,7 +31,7 @@
     "@nuxtjs/html-validator": "^2.0.0",
     "@unocss/nuxt": "^66.0.0",
     "directus-sdk-typegen": "0.1.7",
-    "nuxt": "^3.14.1592",
+    "nuxt": "^4.0.0",
     "nuxt-og-image": "^4.0.1",
     "nuxt-rebundle": "^0.0.2",
     "nuxt-time": "^1.0.3",
