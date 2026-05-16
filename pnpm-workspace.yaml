@@ -1,0 +1,6 @@
+allowBuilds:
+  "@parcel/watcher": false
+  esbuild: false
+  sharp: true
+  simple-git-hooks: true
+  vue-demi: false
